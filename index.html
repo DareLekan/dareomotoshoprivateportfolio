@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dare Omotosho | Cloud Security Architect & DevSecOps Engineer</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0e17',
+                            card: '#111827',
+                            border: '#1f293d',
+                            cyan: '#06b6d4',
+                            emerald: '#10b981',
+                            purple: '#8b5cf6',
+                            amber: '#f59e0b',
+                            rose: '#f43f5e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js for Security Metrics & Visuals -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #0a0e17;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 40px -10px rgba(6, 182, 212, 0.25);
+        }
+
+        /* Cyber Glow Animations */
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+        }
+
+        /* Matrix / Cyber Background Grid */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Terminal Window Styling */
+        .terminal-header {
+            background: #1e293b;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="cyber-grid antialiased selection:bg-cyan-500 selection:text-black">
+
+    <!-- Top Fixed Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-gray-800/80 px-4 md:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-black font-bold font-mono text-xl shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-shield-halved text-gray-900"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-wider text-white group-hover:text-cyan-400 transition-colors">DARE OMOTOSHO</span>
+                    <span class="block text-xs font-mono text-cyan-400/80">Cloud Security & DevSecOps</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#case-studies" class="hover:text-cyan-400 transition-colors">Case Studies</a>
+                <a href="#interactive-labs" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>Security Labs</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#github-projects" class="hover:text-cyan-400 transition-colors">Repositories</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" 
+                   class="px-3.5 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-white font-mono text-xs flex items-center gap-2 border border-gray-700 hover:border-cyan-500/50 transition-all">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span class="hidden sm:inline">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" target="_blank" rel="noopener noreferrer" 
+                   class="px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs flex items-center gap-2 shadow-lg shadow-cyan-600/20 transition-all">
+                    <i class="fa-brands fa-linkedin text-sm"></i>
+                    <span class="hidden sm:inline">LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 md:px-8 relative min-h-screen flex items-center justify-center">
+        <!-- Ambient background lighting -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>AWS & Active Directory Security Architect @ Oxla</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                    Securing Enterprise <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">Cloud Infrastructure</span> & Cryptographic Identities
+                </h1>
+
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                    I am <strong class="text-white">Dare Omotosho (Lekan)</strong>, a Cybersecurity Specialist and Cloud Security Engineer focused on eliminating structural Active Directory exploits, orchestrating automated DevSecOps pipelines, and defending AWS environments against zero-day threats.
+                </p>
+
+                <!-- Interactive Hero Chips -->
+                <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-gray-300">
+                    <span class="px-3 py-1 rounded-md bg-gray-800/80 border border-gray-700/80"><i class="fa-solid fa-key text-amber-400 mr-1.5"></i>Kerberoasting & gMSA</span>
+                    <span class="px-3 py-1 rounded-md bg-gray-800/80 border border-gray-700/80"><i class="fa-solid fa-cloud text-cyan-400 mr-1.5"></i>AWS Security & IAM</span>
+                    <span class="px-3 py-1 rounded-md bg-gray-800/80 border border-gray-700/80"><i class="fa-solid fa-bug text-rose-400 mr-1.5"></i>OWASP 2026 Playbooks</span>
+                    <span class="px-3 py-1 rounded-md bg-gray-800/80 border border-gray-700/80"><i class="fa-solid fa-terminal text-emerald-400 mr-1.5"></i>Burp Suite & PCAP Recon</span>
+                </div>
+
+                <!-- Call to Actions -->
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#case-studies" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-gray-950 font-bold text-sm shadow-xl shadow-cyan-500/20 transition-all flex items-center gap-2">
+                        <span>Explore Technical Case Studies</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" 
+                       class="px-6 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-medium text-sm border border-gray-700 hover:border-cyan-500 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-github text-base"></i>
+                        <span>View GitHub Projects</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Interactive Terminal Preview -->
+            <div class="lg:col-span-5">
+                <div class="glass-card rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
+                    <div class="terminal-header px-4 py-3 flex items-center justify-between border-b border-gray-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            <span class="text-xs font-mono text-gray-400 ml-2">sec-ops@dare-omotosho:~</span>
+                        </div>
+                        <span class="text-xs font-mono text-cyan-400">SEC-AUDIT v3.2</span>
+                    </div>
+                    <div class="p-5 font-mono text-xs sm:text-sm text-gray-300 space-y-3 bg-gray-950/90 min-h-[300px]">
+                        <p class="text-gray-500"># Initializing Active Security Verification Profile...</p>
+                        <p class="text-emerald-400">✔ Identity: Dare Omotosho (Lekan)</p>
+                        <p class="text-emerald-400">✔ Enterprise Track: Cloud Security & gMSA Governance</p>
+                        <div class="p-3 bg-gray-900/90 rounded-lg border border-cyan-500/20 space-y-1">
+                            <p class="text-cyan-300 font-bold">[ACTIVE ENGAGEMENT HIGH LIGHTS]</p>
+                            <p class="text-gray-300">• gMSA Migration: Zero static legacy service keys</p>
+                            <p class="text-gray-300">• OWASP 2026: Automated CI/CD Trivy & WAF checks</p>
+                            <p class="text-gray-300">• Packet Analysis: PCAP SMB & Reflected XSS audits</p>
+                            <p class="text-gray-300">• AWS Cloud: Multi-tier IAM & Trusted Advisor</p>
+                        </div>
+                        <p class="text-amber-400"><i class="fa-solid fa-shield-cat mr-1"></i> Vulnerability Assessment Status: 0 Critical Flaws Found</p>
+                        <div class="pt-2 flex items-center justify-between text-xs text-gray-400 border-t border-gray-800">
+                            <span>GitHub: /Career-RoadMap</span>
+                            <span class="text-cyan-400 animate-pulse">● System Secure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Bar -->
+    <section class="py-10 border-y border-gray-800 bg-gray-950/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800/80">
+                <div class="text-3xl font-black text-cyan-400 font-mono">100%</div>
+                <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">gMSA Automated Encryption</div>
+            </div>
+            <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800/80">
+                <div class="text-3xl font-black text-emerald-400 font-mono">10 / 10</div>
+                <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">OWASP 2026 Safeguards</div>
+            </div>
+            <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800/80">
+                <div class="text-3xl font-black text-purple-400 font-mono">256-Bit</div>
+                <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">AES Kerberos Hardening</div>
+            </div>
+            <div class="p-4 rounded-xl bg-gray-900/40 border border-gray-800/80">
+                <div class="text-3xl font-black text-amber-400 font-mono">AWS & AD</div>
+                <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Cloud & Identity Defense</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Case Studies Section -->
+    <section id="case-studies" class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">// TECHNICAL CASE STUDIES & BRIEFINGS</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Identity, AppSec & Cloud Security Architecture</h2>
+            </div>
+            <p class="text-gray-400 text-sm max-w-md">
+                Detailed breakdowns of real security threats, executive briefings, automated mitigation playbooks, and architectural implementations.
+            </p>
+        </div>
+
+        <!-- Case Study Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Case Study 1: Active Directory Kerberoasting & gMSA Migration -->
+            <div class="glass-card glass-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between border-l-4 border-l-cyan-500">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-cyan-950/80 text-cyan-300 text-xs font-mono border border-cyan-500/30">
+                            IDENTITY SECURITY / AD ARCHITECTURE
+                        </span>
+                        <span class="text-xs font-mono text-gray-400"><i class="fa-solid fa-file-pdf text-rose-400 mr-1"></i> Executive Briefing</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-3">
+                        Bypassing the Perimeter: Kerberoasting Threat & gMSA Remediation
+                    </h3>
+
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        An executive-level architectural security analysis targeting the Kerberos Ticket Granting Service (TGS) cryptographic vulnerability in Active Directory. Outlines how attackers extract service tickets offline to bypass EDRs, and details the permanent structural remediation using Group Managed Service Accounts (gMSAs).
+                    </p>
+
+                    <!-- Technical Highlights list -->
+                    <div class="space-y-2 mb-6 text-xs text-gray-300 font-mono">
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-bug text-rose-400 mt-0.5"></i>
+                            <span><strong>Exploit Vector:</strong> TGS offline GPU dictionary attacks on legacy RC4 service passwords.</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-shield-check text-emerald-400 mt-0.5"></i>
+                            <span><strong>Remediation:</strong> 128-char machine keys, enforced AES-256, automated 30-day AD key rotation.</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-scale-balanced text-amber-400 mt-0.5"></i>
+                            <span><strong>Compliance & ROI:</strong> SOC 2 CC6.3 & NIST SP 800-53 mitigation against $56M ransomware exposure.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-800 flex items-center justify-between flex-wrap gap-3">
+                    <button onclick="openModal('modal-kerberoast')" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors">
+                        <span>Read Full Executive Briefing & Diagram</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <span class="text-xs font-mono text-gray-500">Status: Implemented & Verified</span>
+                </div>
+            </div>
+
+            <!-- Case Study 2: OWASP 2026 DevSecOps Security Mitigation Playbook -->
+            <div class="glass-card glass-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between border-l-4 border-l-emerald-500">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-emerald-950/80 text-emerald-300 text-xs font-mono border border-emerald-500/30">
+                            APPSEC & DEVSECOPS
+                        </span>
+                        <span class="text-xs font-mono text-gray-400"><i class="fa-solid fa-book text-emerald-400 mr-1"></i> Mitigation Playbook</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-3">
+                        OWASP 2026 Security Mitigation & CI/CD Pipeline Shield
+                    </h3>
+
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        A comprehensive operational blueprint covering all 10 OWASP vulnerability pillars—from Broken Access Control to SSRF. Pairs code-level enforcement guidelines (Parameterized SQL, Egress filtering, TLS 1.3) with automated Trivy/Snyk scanning in GitHub Actions pipelines.
+                    </p>
+
+                    <!-- Technical Highlights list -->
+                    <div class="space-y-2 mb-6 text-xs text-gray-300 font-mono">
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-code text-cyan-400 mt-0.5"></i>
+                            <span><strong>Code Checks:</strong> Enforced API ownership validation & backend centralized financial logic.</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-gears text-purple-400 mt-0.5"></i>
+                            <span><strong>Automated Pipelines:</strong> Automated build-breakers on Critical vulnerabilities via Trivy/Snyk.</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-vault text-amber-400 mt-0.5"></i>
+                            <span><strong>Secrets Governance:</strong> Zero plain text .env secrets via AWS Secrets Manager & Vault.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-800 flex items-center justify-between flex-wrap gap-3">
+                    <button onclick="openModal('modal-owasp')" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 transition-colors">
+                        <span>View 10-Point OWASP Blueprint</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <span class="text-xs font-mono text-gray-500">Pipeline Ready</span>
+                </div>
+            </div>
+
+            <!-- Case Study 3: Burp Suite Web Penetration Testing & Token Decoupling -->
+            <div class="glass-card glass-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between border-l-4 border-l-purple-500">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-purple-950/80 text-purple-300 text-xs font-mono border border-purple-500/30">
+                            PENTESTING / BURP SUITE
+                        </span>
+                        <span class="text-xs font-mono text-gray-400"><i class="fa-solid fa-magnifying-glass text-purple-400 mr-1"></i> Web Audit</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-3">
+                        Web Security Academy Attack Analysis & Burp Suite Inspection
+                    </h3>
+
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        In-depth offensive audit evaluating Reflected Cross-Site Scripting (XSS), SQL Injection parameters, and session token tamper-resistance using Burp Suite Professional Inspector. Evaluates serialized cookie payloads and header security bypasses.
+                    </p>
+
+                    <div class="space-y-2 mb-6 text-xs text-gray-300 font-mono">
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-terminal text-rose-400 mt-0.5"></i>
+                            <span><strong>Payload Inspection:</strong> Reflected XSS injection payload via <code>&lt;img src=x onerror=alert(1)&gt;</code>.</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-id-card text-cyan-400 mt-0.5"></i>
+                            <span><strong>Session Decoding:</strong> Serialized PHP/Base64 cookie extraction identifying admin privileges.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-800 flex items-center justify-between flex-wrap gap-3">
+                    <button onclick="openModal('modal-burp')" class="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1.5 transition-colors">
+                        <span>Inspect Payload & Capture Logs</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <span class="text-xs font-mono text-gray-500">Security Audit Completed</span>
+                </div>
+            </div>
+
+            <!-- Case Study 4: Network Packet Reconnaissance & PCAP Inspection -->
+            <div class="glass-card glass-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between border-l-4 border-l-amber-500">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full bg-amber-950/80 text-amber-300 text-xs font-mono border border-amber-500/30">
+                            NETWORK RECON & PACKETS
+                        </span>
+                        <span class="text-xs font-mono text-gray-400"><i class="fa-solid fa-network-wired text-amber-400 mr-1"></i> Wireshark & Nmap</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-3">
+                        Enterprise Network Packet Scanning & Traffic Dissection
+                    </h3>
+
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        Analysis of low-level network packet captures (PCAP) and Nmap scans to identify unencrypted protocol leaks, NetBIOS/SMB broadcast noise (e.g., WEAK-PC), and OSI 7-Layer compliance across transport and application boundary layers.
+                    </p>
+
+                    <div class="space-y-2 mb-6 text-xs text-gray-300 font-mono">
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-sitemap text-amber-400 mt-0.5"></i>
+                            <span><strong>OSI Alignment:</strong> Layer 2 Data Link frame inspection & Layer 7 protocol filtering.</span>
+                        </div>
+                        <div class="flex items-start gap-2 bg-gray-900/80 p-2.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-server text-emerald-400 mt-0.5"></i>
+                            <span><strong>Host Recon:</strong> Identified exposed SMB <code>\MAILSLOT\BROWSE</code> packets from legacy hosts.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-800 flex items-center justify-between flex-wrap gap-3">
+                    <button onclick="openModal('modal-pcap')" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 transition-colors">
+                        <span>Examine Packet Scan Data</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <span class="text-xs font-mono text-gray-500">Packet Capture Verified</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Security Labs Section -->
+    <section id="interactive-labs" class="py-20 px-4 md:px-8 bg-gray-950/80 border-y border-gray-800 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">// INTERACTIVE LIVE DEMOS</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Hands-On Security Engineering Tools</h2>
+                <p class="text-gray-400 text-sm mt-3">
+                    Test live simulations of Kerberoasting cryptographic hash resistance, Burp-style token decoding, and OWASP code checking directly inside this browser workspace.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Lab Navigation Tabs (Left 4 cols) -->
+                <div class="lg:col-span-4 space-y-3">
+                    <button onclick="switchLab('lab-kerberoast')" id="tab-lab-kerberoast" 
+                            class="lab-tab w-full text-left p-4 rounded-xl border border-cyan-500/50 bg-cyan-950/30 text-white font-medium flex items-center gap-3 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-mono">
+                            <i class="fa-solid fa-key text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Kerberoasting Hash Estimator</div>
+                            <div class="text-xs text-gray-400">RC4 Legacy vs gMSA AES-256</div>
+                        </div>
+                    </button>
+
+                    <button onclick="switchLab('lab-burp')" id="tab-lab-burp" 
+                            class="lab-tab w-full text-left p-4 rounded-xl border border-gray-800 bg-gray-900/40 text-gray-300 font-medium flex items-center gap-3 hover:border-gray-700 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 font-mono">
+                            <i class="fa-solid fa-code text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Burp Payload Inspector</div>
+                            <div class="text-xs text-gray-400">Decode Base64 & Inspect XSS</div>
+                        </div>
+                    </button>
+
+                    <button onclick="switchLab('lab-terminal')" id="tab-lab-terminal" 
+                            class="lab-tab w-full text-left p-4 rounded-xl border border-gray-800 bg-gray-900/40 text-gray-300 font-medium flex items-center gap-3 hover:border-gray-700 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono">
+                            <i class="fa-solid fa-terminal text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Live Kali Terminal CLI</div>
+                            <div class="text-xs text-gray-400">Interactive Security Console</div>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Lab Display Workspace (Right 8 cols) -->
+                <div class="lg:col-span-8 glass-card rounded-2xl p-6 sm:p-8 border border-gray-700">
+                    
+                    <!-- LAB 1: Kerberoasting Hash Estimator -->
+                    <div id="lab-kerberoast" class="lab-content space-y-6">
+                        <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Kerberoasting Offline Hash Cracking Simulator</h3>
+                                <p class="text-xs text-gray-400">Compare standard password cracking times against modern gMSA automated keys.</p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-cyan-950 text-cyan-300 font-mono text-xs border border-cyan-500/30">AES-256 vs RC4</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Left Controls -->
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-mono text-gray-300 mb-2">Select Target Account Setup:</label>
+                                    <select id="sim-account-type" onchange="updateHashSim()" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2.5 text-sm text-white focus:border-cyan-500 focus:outline-none font-mono">
+                                        <option value="legacy-weak">Legacy Account: "Summer2024!" (RC4 - Weak)</option>
+                                        <option value="legacy-medium">Legacy Account: "P@ssw0rd12345!" (RC4 - Medium)</option>
+                                        <option value="gmsa">gMSA Account: 128-Char Random Key (AES-256)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-mono text-gray-300 mb-2">GPU Cracking Cluster Speed:</label>
+                                    <select id="sim-gpu-speed" onchange="updateHashSim()" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2.5 text-sm text-white focus:border-cyan-500 focus:outline-none font-mono">
+                                        <option value="10">Standard Rig (10 Billion Hashes/sec)</option>
+                                        <option value="100">Enterprise GPU Rig (100 Billion Hashes/sec)</option>
+                                        <option value="1000">Nation-State Cluster (1 Trillion Hashes/sec)</option>
+                                    </select>
+                                </div>
+
+                                <div class="p-4 bg-gray-900/90 rounded-xl border border-gray-800 space-y-2 text-xs font-mono">
+                                    <div class="text-gray-400">Encrypted TGS Hash Payload:</div>
+                                    <div id="sim-hash-preview" class="text-rose-400 break-all bg-black/50 p-2 rounded border border-rose-900/40">
+                                        $krb5tgs$23$spn_mssql$DOMAIN.LOCAL$user:51e89b...
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Calculation Output -->
+                            <div class="p-6 bg-gray-900/80 rounded-xl border border-gray-800 flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block mb-1">Estimated Offline Crack Duration</span>
+                                    <div id="sim-crack-time" class="text-3xl font-black text-rose-400 font-mono">
+                                        2.4 Minutes
+                                    </div>
+                                    <p id="sim-risk-status" class="text-xs text-rose-300 mt-2">
+                                        ⚠️ CRITICAL RISK: Legacy RC4 cipher allows rapid offline brute-forcing without triggering Active Directory domain lockout.
+                                    </p>
+                                </div>
+
+                                <div id="sim-verdict-box" class="p-3 bg-rose-950/40 border border-rose-500/30 rounded-lg text-xs font-mono text-rose-200">
+                                    <strong>Recommendation:</strong> Migrate SPN immediately to gMSA with automated 30-day credential rotation to enforce AES-256.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LAB 2: Burp Suite Payload Inspector -->
+                    <div id="lab-burp" class="lab-content hidden space-y-6">
+                        <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Burp Suite Style Request & Payload Inspector</h3>
+                                <p class="text-xs text-gray-400">Simulate payload decoding and session cookie vulnerability analysis.</p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-purple-950 text-purple-300 font-mono text-xs border border-purple-500/30">BURP INSPECTOR</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-mono text-gray-300 mb-2">Input Encoded Token / Base64 Payload:</label>
+                                <textarea id="burp-input" rows="3" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-xs text-cyan-300 font-mono focus:border-purple-500 focus:outline-none" placeholder="Enter base64 or URL encoded payload...">Tzo0OiJVc2VyIjoyOntzOjg6InVzZXJuYW1lIjtzOjM6ImFkbWluIjtzOjU6ImFkbWluIjtiOjE7fQ==</textarea>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button onclick="runBurpDecode()" class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-mono text-xs font-bold transition-all">
+                                    Decode Base64 / URL
+                                </button>
+                                <button onclick="injectXSSSample()" class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 font-mono text-xs border border-gray-700 transition-all">
+                                    Load XSS Audit Sample
+                                </button>
+                            </div>
+
+                            <div class="p-4 bg-gray-950 rounded-xl border border-gray-800 space-y-3 font-mono text-xs">
+                                <div class="text-gray-400 font-bold border-b border-gray-800 pb-2 flex items-center justify-between">
+                                    <span>INSPECTOR OUTPUT DECODED DATA:</span>
+                                    <span id="burp-status-tag" class="text-emerald-400">Valid Format</span>
+                                </div>
+                                <pre id="burp-output" class="text-emerald-300 whitespace-pre-wrap break-all bg-black/60 p-3 rounded border border-gray-800">
+O:4:"User":2:{s:8:"username";s:5:"admin";s:5:"admin";b:1;}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LAB 3: Live Kali Terminal CLI -->
+                    <div id="lab-terminal" class="lab-content hidden space-y-4">
+                        <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Interactive Kali Linux Security Terminal</h3>
+                                <p class="text-xs text-gray-400">Run security commands to explore Dare Omotosho's expertise.</p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-emerald-950 text-emerald-300 font-mono text-xs border border-emerald-500/30">CLI ACTIVE</span>
+                        </div>
+
+                        <div class="p-4 bg-gray-950 rounded-xl border border-gray-800 font-mono text-xs space-y-3 min-h-[260px] flex flex-col justify-between">
+                            <div id="term-history" class="space-y-2 overflow-y-auto max-h-[220px] text-gray-300">
+                                <p class="text-gray-500">Welcome to Dare Omotosho's Interactive Terminal. Type <span class="text-cyan-400 font-bold">help</span> to list available commands.</p>
+                            </div>
+
+                            <div class="flex items-center gap-2 border-t border-gray-800 pt-3">
+                                <span class="text-emerald-400 font-bold">dare@oxla-sec:~$</span>
+                                <input type="text" id="term-input" onkeydown="handleTermKey(event)" class="w-full bg-transparent text-cyan-300 outline-none font-mono text-xs" placeholder="type 'help', 'nmap', 'gmsa', 'owasp', 'socials'..." autofocus />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies & Skills Section -->
+    <section id="skills" class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block">// CORE COMPETENCIES</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Multidisciplinary Security Stack</h2>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Bridging identity governance, offensive security testing, cloud native hardening, and compliance controls into a seamless defense system.
+                </p>
+
+                <!-- Skill Category Accordion Cards -->
+                <div class="space-y-3 text-xs font-mono">
+                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-key text-amber-400 text-base"></i>
+                            <span class="text-white font-bold">Identity & Access Governance</span>
+                        </div>
+                        <span class="text-cyan-400">Kerberos, AD, gMSA, IAM</span>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-cloud text-cyan-400 text-base"></i>
+                            <span class="text-white font-bold">AWS Cloud & Infrastructure</span>
+                        </div>
+                        <span class="text-cyan-400">Terraform, Secrets Mgr, WAF</span>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-bug text-rose-400 text-base"></i>
+                            <span class="text-white font-bold">Application Security & Auditing</span>
+                        </div>
+                        <span class="text-cyan-400">Burp Suite Pro, OWASP, XSS</span>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-code text-emerald-400 text-base"></i>
+                            <span class="text-white font-bold">DevSecOps & Pipeline Security</span>
+                        </div>
+                        <span class="text-cyan-400">Trivy, Snyk, GitHub Actions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Chart Visualizer -->
+            <div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 border border-gray-700">
+                <h3 class="text-sm font-mono text-gray-300 font-bold mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-radar text-cyan-400"></i>
+                    SECURITY DOMAIN PROFICIENCY
+                </h3>
+                <div class="w-full h-[320px]">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GitHub & LinkedIn Direct Embed Showcase -->
+    <section id="github-projects" class="py-20 px-4 md:px-8 bg-gray-950/60 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto space-y-12">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">// EMBEDDED CODE & SOCIAL PROFILES</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Direct Access to GitHub Work & LinkedIn Profile</h2>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" 
+                       class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-mono text-xs border border-gray-700 flex items-center gap-2 transition-all">
+                        <i class="fa-brands fa-github text-sm"></i>
+                        <span>github.com/dareomotosho</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- GitHub Card Embed -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 border border-gray-700 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-gray-800 border border-cyan-500/40 flex items-center justify-center text-white text-2xl">
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Career-RoadMap / dareomotosho</h3>
+                                    <p class="text-xs font-mono text-cyan-400">GitHub Security Workspace</p>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 font-mono text-xs border border-emerald-500/30">PUBLIC REPO</span>
+                        </div>
+
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Houses technical scripts, IAM policies, Kerberoasting defense playbooks, and security automation configurations.
+                        </p>
+
+                        <!-- Repo highlights -->
+                        <div class="p-4 bg-gray-900/90 rounded-xl border border-gray-800 font-mono text-xs space-y-2">
+                            <div class="flex items-center justify-between text-gray-300">
+                                <span><i class="fa-regular fa-folder text-amber-400 mr-2"></i>aws-security-policies</span>
+                                <span class="text-gray-500">Updated recently</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-300">
+                                <span><i class="fa-regular fa-folder text-cyan-400 mr-2"></i>gmsa-ad-migration-script</span>
+                                <span class="text-gray-500">PowerShell / AD</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-300">
+                                <span><i class="fa-regular fa-folder text-emerald-400 mr-2"></i>owasp-ci-cd-pipeline</span>
+                                <span class="text-gray-500">GitHub Actions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-800 mt-6">
+                        <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" 
+                           class="w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs font-mono flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <span>Open Dare Omotosho's GitHub Repository</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Profile Card Embed -->
+                <div class="glass-card rounded-2xl p-6 sm:p-8 border border-gray-700 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-cyan-900/60 border border-cyan-400 flex items-center justify-center text-cyan-300 text-2xl">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Dare Omotosho Lekan</h3>
+                                    <p class="text-xs font-mono text-cyan-400">Cloud Security Engineer @ Oxla</p>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-cyan-950 text-cyan-300 font-mono text-xs border border-cyan-500/30">LINKEDIN</span>
+                        </div>
+
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Connect on LinkedIn for professional network engagements, identity architecture consultation, and cloud threat mitigation insights.
+                        </p>
+
+                        <div class="p-4 bg-gray-900/90 rounded-xl border border-gray-800 text-xs text-gray-300 space-y-2">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-briefcase text-cyan-400"></i>
+                                <span>Specialization: Enterprise Cloud Security & DevSecOps</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-rose-400"></i>
+                                <span>Lagos, Nigeria / Global Remote Engagements</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-building text-emerald-400"></i>
+                                <span>Company Focus: Oxla Cloud Security Infrastructure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-800 mt-6">
+                        <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" target="_blank" rel="noopener noreferrer" 
+                           class="w-full py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs font-mono flex items-center justify-center gap-2 border border-gray-700 transition-all">
+                            <span>Connect on LinkedIn Profile</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Engagement Section -->
+    <section id="contact" class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-gray-700 relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block">// GET IN TOUCH</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Secure Your Cloud Infrastructure</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Available for Cloud Security Audits, DevSecOps Pipeline Implementations, Active Directory Remediation, and Security Engineering consulting.
+                    </p>
+
+                    <div class="space-y-3 font-mono text-xs">
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-brands fa-github text-cyan-400 text-lg w-6"></i>
+                            <span>github.com/Career-RoadMap/dareomotosho</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-brands fa-linkedin text-cyan-400 text-lg w-6"></i>
+                            <span>linkedin.com/in/dare-omotosho-lekan-cloud-oxla</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-shield text-emerald-400 text-lg w-6"></i>
+                            <span>PGP Encrypted & Verified Profile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4 bg-gray-900/90 p-6 rounded-2xl border border-gray-800">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 mb-1">Your Name / Organization</label>
+                            <input type="text" required class="w-full bg-gray-950 border border-gray-700 rounded-lg p-2.5 text-sm text-white focus:border-cyan-500 outline-none" placeholder="e.g., Enterprise Security Lead">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 mb-1">Your Email</label>
+                            <input type="email" required class="w-full bg-gray-950 border border-gray-700 rounded-lg p-2.5 text-sm text-white focus:border-cyan-500 outline-none" placeholder="name@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-300 mb-1">Security Scope / Message</label>
+                            <textarea rows="3" required class="w-full bg-gray-950 border border-gray-700 rounded-lg p-2.5 text-sm text-white focus:border-cyan-500 outline-none" placeholder="Briefly describe your cloud or identity security project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-gray-950 font-bold text-sm shadow-xl hover:opacity-90 transition-opacity">
+                            Send Secure Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800 text-center text-xs font-mono text-gray-500">
+        <p>© 2026 Dare Omotosho (Lekan). Cloud Security Architect & Cybersecurity Engineer.</p>
+        <p class="mt-1 text-gray-600">Built with custom responsive UI, Chart.js & Tailwind CSS.</p>
+    </footer>
+
+    <!-- MODAL DIALOGS FOR CASE STUDIES -->
+    
+    <!-- Modal 1: Kerberoasting Executive Briefing -->
+    <div id="modal-kerberoast" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 border border-cyan-500/40 relative space-y-6">
+            <button onclick="closeModal('modal-kerberoast')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block">EXECUTIVE BRIEFING</span>
+                <h3 class="text-2xl font-bold text-white">Bypassing the Perimeter: The Kerberoasting Threat</h3>
+            </div>
+
+            <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
+                <p>
+                    <strong class="text-white">Problem & Root Cause:</strong> Under standard Active Directory Kerberos protocol mechanics, the Key Distribution Center (KDC) must return an encrypted Service Ticket (TGS) to any authenticated domain user who requests an SPN. The ticket is encrypted using the password hash of the service account.
+                </p>
+                <div class="p-4 bg-gray-900 rounded-xl border border-gray-800 space-y-2 font-mono text-xs">
+                    <div class="text-cyan-400 font-bold">LEGACY vs gMSA ARCHITECTURAL COMPARISON</div>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div>
+                            <span class="text-rose-400 block font-bold">Legacy Service Account:</span>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1 mt-1">
+                                <li>Human-generated static password</li>
+                                <li>Weak RC4 cipher</li>
+                                <li>Manual rotation risk / downtime</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="text-emerald-400 block font-bold">gMSA Upgrade (Machine Accounts):</span>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1 mt-1">
+                                <li>128-character machine keys</li>
+                                <li>Enforced AES-256 encryption</li>
+                                <li>Automated 30-day AD key rotation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <strong class="text-white">Business Impact:</strong> Prevents $56M catastrophic ransomware breaches resulting from compromised service accounts while complying with SOC 2 CC6.3 & NIST SP 800-53 controls.
+                </p>
+            </div>
+
+            <div class="pt-4 border-t border-gray-800 flex justify-end">
+                <button onclick="closeModal('modal-kerberoast')" class="px-5 py-2 rounded-lg bg-gray-800 text-white font-mono text-xs hover:bg-gray-700">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: OWASP Playbook -->
+    <div id="modal-owasp" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 border border-emerald-500/40 relative space-y-6">
+            <button onclick="closeModal('modal-owasp')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest block">SECURITY BLUEPRINT</span>
+                <h3 class="text-2xl font-bold text-white">OWASP 2026 Security Mitigation Playbook</h3>
+            </div>
+
+            <div class="space-y-3 text-xs text-gray-300 font-mono">
+                <div class="p-3 bg-gray-900 rounded-lg border border-gray-800">
+                    <span class="text-emerald-400 font-bold block mb-1">1. Broken Access Control (#1 Risk)</span>
+                    <p class="text-gray-300">Every API endpoint must verify ownership: <code>SELECT * FROM tickets WHERE id = ? AND user_id = current_user</code>. Disable all default database/cloud accounts.</p>
+                </div>
+                <div class="p-3 bg-gray-900 rounded-lg border border-gray-800">
+                    <span class="text-emerald-400 font-bold block mb-1">2. Cryptographic Failures</span>
+                    <p class="text-gray-300">Enable Disk Encryption on Cloud SQL/RDS. Enforce TLS 1.3 only. Secrets managed via HashiCorp Vault / AWS Secrets Manager.</p>
+                </div>
+                <div class="p-3 bg-gray-900 rounded-lg border border-gray-800">
+                    <span class="text-emerald-400 font-bold block mb-1">3. Injection Prevention</span>
+                    <p class="text-gray-300">Mandatory parameterized queries. Deploy Web Application Firewall (WAF) with SQLi rules enabled.</p>
+                </div>
+                <div class="p-3 bg-gray-900 rounded-lg border border-gray-800">
+                    <span class="text-emerald-400 font-bold block mb-1">4. CI/CD Vulnerability Scanning</span>
+                    <p class="text-gray-300">Trivy and Snyk integrated into GitHub Actions. Pipeline breaks automatically on Critical vulnerabilities.</p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-800 flex justify-end">
+                <button onclick="closeModal('modal-owasp')" class="px-5 py-2 rounded-lg bg-gray-800 text-white font-mono text-xs hover:bg-gray-700">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Burp Suite Findings -->
+    <div id="modal-burp" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 border border-purple-500/40 relative space-y-6">
+            <button onclick="closeModal('modal-burp')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-xs font-mono text-purple-400 uppercase tracking-widest block">BURP SUITE PRO AUDIT</span>
+                <h3 class="text-2xl font-bold text-white">Web Security Scan & Payload Analysis</h3>
+            </div>
+
+            <div class="space-y-4 text-xs font-mono text-gray-300">
+                <p class="text-sm text-gray-300 font-sans">
+                    Demonstrates penetration testing findings using Burp Suite Professional to detect reflected Cross-Site Scripting (XSS) and serialized cookie privilege escalation.
+                </p>
+
+                <div class="p-4 bg-gray-900 rounded-xl border border-gray-800 space-y-2">
+                    <div class="text-purple-400 font-bold">BURP SUITE REPEATER REQUEST SAMPLE:</div>
+                    <pre class="text-gray-400 bg-black/70 p-3 rounded overflow-x-auto">
+GET /?q=%3Cimg%20src=x%20onerror=alert(1)%3E HTTP/1.1
+Host: web-security-academy.net
+Cookie: session=Tzo0OiJVc2VyIjoyOntzOjg6InVzZXJuYW1lIjtzOjM6ImFkbWluIjtzOjU6ImFkbWluIjtiOjE7fQ==
+                    </pre>
+                </div>
+
+                <div class="p-4 bg-gray-900 rounded-xl border border-gray-800 space-y-1">
+                    <span class="text-emerald-400 font-bold">DECODED SESSION TOKEN OBJECT:</span>
+                    <p class="text-gray-300">Decoded Base64 string discloses PHP serialized object: <code>username=admin</code>, <code>admin=true</code>.</p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-800 flex justify-end">
+                <button onclick="closeModal('modal-burp')" class="px-5 py-2 rounded-lg bg-gray-800 text-white font-mono text-xs hover:bg-gray-700">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Network PCAP Scan -->
+    <div id="modal-pcap" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 border border-amber-500/40 relative space-y-6">
+            <button onclick="closeModal('modal-pcap')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-xs font-mono text-amber-400 uppercase tracking-widest block">PACKET ANALYSIS</span>
+                <h3 class="text-2xl font-bold text-white">PCAP & Network Reconnaissance Inspection</h3>
+            </div>
+
+            <div class="space-y-4 text-xs font-mono text-gray-300">
+                <p class="text-sm text-gray-300 font-sans">
+                    Detailed packet analysis of local network scans revealing unencrypted broadcast packets from legacy host `WEAK-PC` communicating over NetBIOS `\MAILSLOT\BROWSE`.
+                </p>
+
+                <div class="p-4 bg-gray-900 rounded-xl border border-gray-800 space-y-2">
+                    <div class="text-amber-400 font-bold">PCAP DISSECTED FRAME LOGS:</div>
+                    <pre class="text-gray-400 bg-black/70 p-3 rounded overflow-x-auto">
+Packet #1: SMB Broadcast -> \MAILSLOT\BROWSE -> Host: WEAK-PC
+Packet #2: TCP Port 80 SYN -> Target 192.168.100.103
+Packet #3: OSI Layer 2 Frame Ethernet II (00:1c:c0:...)
+                    </pre>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-800 flex justify-end">
+                <button onclick="closeModal('modal-pcap')" class="px-5 py-2 rounded-lg bg-gray-800 text-white font-mono text-xs hover:bg-gray-700">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Modal Handlers
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Interactive Security Lab Tab Switching
+        function switchLab(labId) {
+            // Hide all content
+            document.querySelectorAll('.lab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(labId).classList.remove('hidden');
+
+            // Reset tab styles
+            document.querySelectorAll('.lab-tab').forEach(tab => {
+                tab.classList.remove('border-cyan-500/50', 'bg-cyan-950/30', 'text-white');
+                tab.classList.add('border-gray-800', 'bg-gray-900/40', 'text-gray-300');
+            });
+
+            // Highlight active tab
+            const activeTab = document.getElementById('tab-' + labId);
+            activeTab.classList.remove('border-gray-800', 'bg-gray-900/40', 'text-gray-300');
+            activeTab.classList.add('border-cyan-500/50', 'bg-cyan-950/30', 'text-white');
+        }
+
+        // Lab 1: Kerberoasting Hash Simulator Logic
+        function updateHashSim() {
+            const accType = document.getElementById('sim-account-type').value;
+            const gpuSpeed = parseInt(document.getElementById('sim-gpu-speed').value);
+            
+            const timeEl = document.getElementById('sim-crack-time');
+            const riskEl = document.getElementById('sim-risk-status');
+            const verdictEl = document.getElementById('sim-verdict-box');
+            const hashPreview = document.getElementById('sim-hash-preview');
+
+            if (accType === 'legacy-weak') {
+                hashPreview.innerText = '$krb5tgs$23$spn_mssql$DOMAIN.LOCAL$user:51e89b... [RC4 Cipher]';
+                const seconds = 144 / (gpuSpeed / 10);
+                timeEl.innerText = `${seconds.toFixed(1)} Seconds`;
+                timeEl.className = 'text-3xl font-black text-rose-500 font-mono';
+                riskEl.innerText = '⚠️ CRITICAL RISK: Legacy RC4 weak password cracked almost instantaneously offline.';
+                verdictEl.innerHTML = '<strong>Action Required:</strong> Immediate password reset and migration to gMSA.';
+            } else if (accType === 'legacy-medium') {
+                hashPreview.innerText = '$krb5tgs$23$spn_svc_app$DOMAIN.LOCAL$user:88a12c... [RC4 Cipher]';
+                const hours = 12 / (gpuSpeed / 10);
+                timeEl.innerText = `${hours.toFixed(1)} Hours`;
+                timeEl.className = 'text-3xl font-black text-amber-400 font-mono';
+                riskEl.innerText = '⚠️ HIGH RISK: Susceptible to dictionary attacks within hours using parallel GPU clusters.';
+                verdictEl.innerHTML = '<strong>Action Required:</strong> Upgrade service account to gMSA with AES-256.';
+            } else {
+                hashPreview.innerText = '$krb5tgs$18$gmsa_svc_db$DOMAIN.LOCAL$key:a9f4e2... [AES-256 128-Char Machine Key]';
+                timeEl.innerText = '3.8 x 10^24 Years';
+                timeEl.className = 'text-3xl font-black text-emerald-400 font-mono';
+                riskEl.innerText = '🛡️ SECURE: Cryptographically uncrackable key. Rotates automatically every 30 days via Active Directory.';
+                verdictEl.innerHTML = '<strong>Status:</strong> Complies with SOC 2 & NIST SP 800-53 zero-trust requirements.';
+            }
+        }
+
+        // Lab 2: Burp Suite Inspector Logic
+        function runBurpDecode() {
+            const input = document.getElementById('burp-input').value.trim();
+            const outputEl = document.getElementById('burp-output');
+            const statusTag = document.getElementById('burp-status-tag');
+
+            try {
+                // Try Base64 decode
+                const decoded = atob(input);
+                outputEl.innerText = decoded;
+                statusTag.innerText = "Base64 Decoded Successfully";
+                statusTag.className = "text-emerald-400";
+            } catch (e) {
+                try {
+                    // Try URL decode
+                    const decodedUrl = decodeURIComponent(input);
+                    outputEl.innerText = decodedUrl;
+                    statusTag.innerText = "URL Decoded Successfully";
+                    statusTag.className = "text-cyan-400";
+                } catch (err) {
+                    outputEl.innerText = "Error: Input is not a valid Base64 or URL encoded payload.";
+                    statusTag.innerText = "Decode Error";
+                    statusTag.className = "text-rose-400";
+                }
+            }
+        }
+
+        function injectXSSSample() {
+            document.getElementById('burp-input').value = "%3Cscript%3Ealert(%27XSS_VULNERABILITY_FOUND%27)%3C/script%3E";
+            runBurpDecode();
+        }
+
+        // Lab 3: Terminal Simulator Logic
+        function handleTermKey(e) {
+            if (e.key === 'Enter') {
+                const inputEl = document.getElementById('term-input');
+                const cmd = inputEl.value.trim().toLowerCase();
+                const history = document.getElementById('term-history');
+
+                if (!cmd) return;
+
+                // Echo command
+                const cmdLine = document.createElement('div');
+                cmdLine.innerHTML = `<span class="text-emerald-400 font-bold">dare@oxla-sec:~$</span> <span class="text-white">${cmd}</span>`;
+                history.appendChild(cmdLine);
+
+                let responseText = '';
+                if (cmd === 'help') {
+                    responseText = `Available Commands:
+  • <span class="text-cyan-300">nmap</span>     - Run simulated network reconnaissance
+  • <span class="text-cyan-300">gmsa</span>     - View Active Directory gMSA migration details
+  • <span class="text-cyan-300">owasp</span>    - Run OWASP 2026 pipeline audit check
+  • <span class="text-cyan-300">socials</span>  - Get Dare Omotosho's GitHub and LinkedIn links
+  • <span class="text-cyan-300">clear</span>    - Clear terminal window`;
+                } else if (cmd === 'nmap') {
+                    responseText = `<span class="text-emerald-300">Nmap scan report for target 192.168.100.103:
+PORT     STATE SERVICE
+80/tcp   OPEN  http (WAF Protected)
+443/tcp  OPEN  https (TLS 1.3 Enforced)
+88/tcp   OPEN  kerberos-sec (gMSA Enforced)
+0 Vulnerabilities Found.</span>`;
+                } else if (cmd === 'gmsa') {
+                    responseText = `<span class="text-cyan-300">[gMSA STATUS CHECK]
+Key Length: 128 characters
+Cipher: AES-256
+Rotation Interval: 30 Days (Automated by Active Directory)
+Kerberoasting Vulnerability: MITIGATED</span>`;
+                } else if (cmd === 'owasp') {
+                    responseText = `<span class="text-emerald-400">[OWASP 2026 CHECK]
+✔ Broken Access Control: Passed (API ownership checks enforced)
+✔ Cryptography: Passed (Disk Encryption ON, TLS 1.3)
+✔ Injection: Passed (Parameterized Queries mandatory)
+✔ CI/CD: Passed (Trivy & Snyk active)</span>`;
+                } else if (cmd === 'socials') {
+                    responseText = `GitHub: <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" class="text-cyan-400 underline">https://github.com/Career-RoadMap/dareomotosho</a>
+LinkedIn: <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" target="_blank" class="text-cyan-400 underline">https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla</a>`;
+                } else if (cmd === 'clear') {
+                    history.innerHTML = '';
+                    inputEl.value = '';
+                    return;
+                } else {
+                    responseText = `<span class="text-rose-400">Command not recognized: '${cmd}'. Type 'help' for available options.</span>`;
+                }
+
+                const resLine = document.createElement('div');
+                resLine.className = 'text-gray-300 pl-2 border-l-2 border-cyan-500/40 my-1';
+                resLine.innerHTML = responseText;
+                history.appendChild(resLine);
+
+                inputEl.value = '';
+                history.scrollTop = history.scrollHeight;
+            }
+        }
+
+        // Contact Form Handling
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out! Dare Omotosho will review your message and reply promptly.');
+            e.target.reset();
+        }
+
+        // Render Chart.js Skills Radar
+        window.onload = function() {
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Active Directory Security',
+                        'AWS Cloud Security',
+                        'DevSecOps & CI/CD',
+                        'Web Pentesting (Burp Suite)',
+                        'OWASP 2026 Compliance',
+                        'Network Packet Analysis'
+                    ],
+                    datasets: [{
+                        label: 'Proficiency Level (%)',
+                        data: [98, 95, 92, 90, 96, 94],
+                        backgroundColor: 'rgba(6, 182, 212, 0.25)',
+                        borderColor: '#06b6d4',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#10b981',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#10b981'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            pointLabels: {
+                                color: '#e2e8f0',
+                                font: { family: 'Fira Code', size: 10 }
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                backdropColor: 'transparent',
+                                stepSize: 20
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#06b6d4',
+                                font: { family: 'Fira Code', size: 12 }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
