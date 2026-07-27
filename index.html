@@ -133,7 +133,7 @@
                 <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
             </div>
 
-            <!-- Header Action Buttons -->
+            <!-- Header Action Buttons & Mobile Toggle -->
             <div class="flex items-center gap-3">
                 <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" 
                    class="px-3.5 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-white font-mono text-xs flex items-center gap-2 border border-gray-700 hover:border-cyan-500/50 transition-all">
@@ -145,7 +145,20 @@
                     <i class="fa-brands fa-linkedin text-sm"></i>
                     <span class="hidden sm:inline">LinkedIn</span>
                 </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white p-2 text-xl" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 border-t border-gray-800 mt-3 space-y-2 text-sm font-medium">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-cyan-400">About</a>
+            <a href="#case-studies" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-cyan-400">Case Studies</a>
+            <a href="#interactive-labs" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-cyan-400">Security Labs</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-cyan-400">Skills</a>
+            <a href="#github-projects" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-cyan-400">Repositories</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-gray-300 hover:text-cyan-400">Contact</a>
         </div>
     </nav>
 
@@ -157,7 +170,7 @@
 
         <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <!-- Left Hero Content -->
-            <div class="lg:col-span-7 space-y-6">
+            <div id="about" class="lg:col-span-7 space-y-6">
                 <!-- Status Badge -->
                 <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
@@ -211,7 +224,7 @@
                         <p class="text-emerald-400">✔ Identity: Dare Omotosho (Lekan)</p>
                         <p class="text-emerald-400">✔ Enterprise Track: Cloud Security & gMSA Governance</p>
                         <div class="p-3 bg-gray-900/90 rounded-lg border border-cyan-500/20 space-y-1">
-                            <p class="text-cyan-300 font-bold">[ACTIVE ENGAGEMENT HIGH LIGHTS]</p>
+                            <p class="text-cyan-300 font-bold">[ACTIVE ENGAGEMENT HIGHLIGHTS]</p>
                             <p class="text-gray-300">• gMSA Migration: Zero static legacy service keys</p>
                             <p class="text-gray-300">• OWASP 2026: Automated CI/CD Trivy & WAF checks</p>
                             <p class="text-gray-300">• Packet Analysis: PCAP SMB & Reflected XSS audits</p>
@@ -1005,6 +1018,12 @@ Packet #3: OSI Layer 2 Frame Ethernet II (00:1c:c0:...)
 
     <!-- JavaScript Logic -->
     <script>
+        // Toggle mobile navigation menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
         // Modal Handlers
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -1027,8 +1046,10 @@ Packet #3: OSI Layer 2 Frame Ethernet II (00:1c:c0:...)
 
             // Highlight active tab
             const activeTab = document.getElementById('tab-' + labId);
-            activeTab.classList.remove('border-gray-800', 'bg-gray-900/40', 'text-gray-300');
-            activeTab.classList.add('border-cyan-500/50', 'bg-cyan-950/30', 'text-white');
+            if (activeTab) {
+                activeTab.classList.remove('border-gray-800', 'bg-gray-900/40', 'text-gray-300');
+                activeTab.classList.add('border-cyan-500/50', 'bg-cyan-950/30', 'text-white');
+            }
         }
 
         // Lab 1: Kerberoasting Hash Simulator Logic
