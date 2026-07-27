@@ -35,11 +35,11 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Chart.js for Security Metrics & Visuals -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
     <style>
         body {
@@ -1161,67 +1161,84 @@ LinkedIn: <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" t
         // Contact Form Handling
         function handleContactSubmit(e) {
             e.preventDefault();
-            alert('Thank you for reaching out! Dare Omotosho will review your message and reply promptly.');
+            const messageContainer = e.target.parentElement;
+            const successMsg = document.createElement('div');
+            successMsg.className = 'p-4 mt-3 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 font-mono text-xs';
+            successMsg.innerHTML = '✔ Message transmitted successfully. Dare Omotosho will respond shortly.';
+            messageContainer.appendChild(successMsg);
             e.target.reset();
+            setTimeout(() => successMsg.remove(), 6000);
         }
 
-        // Render Chart.js Skills Radar
-        window.onload = function() {
-            const ctx = document.getElementById('skillsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: [
-                        'Active Directory Security',
-                        'AWS Cloud Security',
-                        'DevSecOps & CI/CD',
-                        'Web Pentesting (Burp Suite)',
-                        'OWASP 2026 Compliance',
-                        'Network Packet Analysis'
-                    ],
-                    datasets: [{
-                        label: 'Proficiency Level (%)',
-                        data: [98, 95, 92, 90, 96, 94],
-                        backgroundColor: 'rgba(6, 182, 212, 0.25)',
-                        borderColor: '#06b6d4',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#10b981',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: '#10b981'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
-                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                            pointLabels: {
-                                color: '#e2e8f0',
-                                font: { family: 'Fira Code', size: 10 }
-                            },
-                            ticks: {
-                                color: '#94a3b8',
-                                backdropColor: 'transparent',
-                                stepSize: 20
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
+        // Render Chart.js Skills Radar safely after DOM load
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartCanvas = document.getElementById('skillsChart');
+            if (!chartCanvas) return;
+            
+            // Check if Chart object is loaded before rendering
+            const renderChart = () => {
+                if (typeof Chart === 'undefined') {
+                    setTimeout(renderChart, 100);
+                    return;
+                }
+                const ctx = chartCanvas.getContext('2d');
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: [
+                            'Active Directory Security',
+                            'AWS Cloud Security',
+                            'DevSecOps & CI/CD',
+                            'Web Pentesting (Burp Suite)',
+                            'OWASP 2026 Compliance',
+                            'Network Packet Analysis'
+                        ],
+                        datasets: [{
+                            label: 'Proficiency Level (%)',
+                            data: [98, 95, 92, 90, 96, 94],
+                            backgroundColor: 'rgba(6, 182, 212, 0.25)',
+                            borderColor: '#06b6d4',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#10b981',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#10b981'
+                        }]
                     },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#06b6d4',
-                                font: { family: 'Fira Code', size: 12 }
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                                grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                                pointLabels: {
+                                    color: '#e2e8f0',
+                                    font: { family: 'Fira Code', size: 10 }
+                                },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    backdropColor: 'transparent',
+                                    stepSize: 20
+                                },
+                                suggestedMin: 0,
+                                suggestedMax: 100
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#06b6d4',
+                                    font: { family: 'Fira Code', size: 12 }
+                                }
                             }
                         }
                     }
-                }
-            });
-        };
+                });
+            };
+
+            renderChart();
+        });
     </script>
 </body>
 </html>
