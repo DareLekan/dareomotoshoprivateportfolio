@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dare Omotosho | Cloud & Cybersecurity Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            900: '#14532d',
+                            dark: '#0a0f1d',
+                            card: '#111827',
+                            border: '#1f2937',
+                            accent: '#06b6d4'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and ambient grid effects */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0f1d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22c55e;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(34, 197, 94, 0.08) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.25);
+        }
+        .glow-blue {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+        }
+        .terminal-shadow {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-[#0a0f1d] text-slate-200 font-sans antialiased bg-grid-pattern min-h-screen selection:bg-emerald-500 selection:text-black">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0a0f1d]/85 border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#top" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-shield-halved text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-white tracking-wide block leading-none">DARE OMOTOSHO</span>
+                    <span class="text-xs font-mono text-emerald-400">Cloud & Cyber Security</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-1 text-sm font-medium">
+                <a href="#identity-sec" class="px-3 py-2 rounded-md hover:text-emerald-400 hover:bg-slate-800/50 transition">Identity Sec</a>
+                <a href="#appsec" class="px-3 py-2 rounded-md hover:text-emerald-400 hover:bg-slate-800/50 transition">AppSec & Burp</a>
+                <a href="#recon" class="px-3 py-2 rounded-md hover:text-emerald-400 hover:bg-slate-800/50 transition">Recon & Logs</a>
+                <a href="#owasp" class="px-3 py-2 rounded-md hover:text-emerald-400 hover:bg-slate-800/50 transition">OWASP 2026</a>
+                <a href="#osi" class="px-3 py-2 rounded-md hover:text-emerald-400 hover:bg-slate-800/50 transition">OSI Model</a>
+            </nav>
+
+            <!-- Embedded External Links Buttons -->
+            <div class="flex items-center space-x-2">
+                <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition" title="GitHub Profile">
+                    <i class="fa-brands fa-github text-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 transition" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin text-lg"></i>
+                </a>
+                <a href="https://dareomotosho.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold transition text-sm shadow-lg shadow-emerald-500/20">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>dareomotosho.com</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="top" class="relative pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Active Security Research & Threat Mitigation</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Securing Cloud Architectures & <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500">Identity Perimeters</span>
+                    </h1>
+
+                    <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">
+                        Welcome to my technical portfolio. I specialize in Active Directory identity defense, web application vulnerability assessment (XSS, Injection, Session Security), network traffic analysis, and cloud security governance under standard security frameworks.
+                    </p>
+
+                    <!-- Embedded Resources Fast Hub -->
+                    <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-3">
+                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Embedded External Profiles</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition group">
+                                <i class="fa-brands fa-github text-xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                                <div class="overflow-hidden">
+                                    <span class="text-xs text-slate-400 block">GitHub Repos</span>
+                                    <span class="text-xs font-mono font-medium text-slate-200 truncate block">/dareomotosho</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition group">
+                                <i class="fa-brands fa-linkedin text-xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+                                <div class="overflow-hidden">
+                                    <span class="text-xs text-slate-400 block">LinkedIn Profile</span>
+                                    <span class="text-xs font-mono font-medium text-slate-200 truncate block">/in/dare-omotosho</span>
+                                </div>
+                            </a>
+
+                            <a href="https://dareomotosho.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-3 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition group">
+                                <i class="fa-solid fa-globe text-xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                                <div class="overflow-hidden">
+                                    <span class="text-xs text-slate-400 block">Personal Site</span>
+                                    <span class="text-xs font-mono font-medium text-slate-200 truncate block">dareomotosho.com</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Highlights Stat Metrics -->
+                    <div class="grid grid-cols-3 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="block text-2xl font-bold font-mono text-emerald-400">10/10</span>
+                            <span class="text-xs text-slate-400">OWASP Playbook 2026 Controls</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="block text-2xl font-bold font-mono text-cyan-400">AES-256</span>
+                            <span class="text-xs text-slate-400">gMSA Identity Hardening</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+                            <span class="block text-2xl font-bold font-mono text-purple-400">Layer 7</span>
+                            <span class="text-xs text-slate-400">AppSec Auditing & PCAP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Profile Card / Terminal Preview -->
+                <div class="lg:col-span-5">
+                    <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 glow-effect relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <div class="flex items-center space-x-4 pb-6 border-b border-slate-800">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-slate-950 font-extrabold text-2xl shadow-lg">
+                                DO
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Dare Omotosho</h3>
+                                <p class="text-xs text-emerald-400 font-mono">Cloud Architect & Security Specialist</p>
+                                <span class="inline-block mt-1 text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">Active Directory • AppSec • Cloud Auditing</span>
+                            </div>
+                        </div>
+
+                        <!-- System Status Interactive Box -->
+                        <div class="mt-6 space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs font-mono">
+                                    <span class="text-slate-400">Identity Protocol Hardening</span>
+                                    <span class="text-emerald-400">Kerberoasting Mitigation</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full w-full rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs font-mono">
+                                    <span class="text-slate-400">Web Vulnerability Diagnostics</span>
+                                    <span class="text-cyan-400">Burp Suite Pro Audited</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="bg-cyan-500 h-full w-[92%] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs font-mono">
+                                    <span class="text-slate-400">Network Recon & Log Forensics</span>
+                                    <span class="text-purple-400">Nmap & Wireshark PCAP</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="bg-purple-500 h-full w-[96%] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <!-- Live Terminal Snippet -->
+                            <div class="mt-6 p-3 rounded-lg bg-black/60 font-mono text-xs text-slate-300 border border-slate-800 space-y-1">
+                                <p class="text-slate-500"># Verifying current security posture...</p>
+                                <p><span class="text-emerald-400">dare@security-node:~$</span> check-defense --target AD-DOMAIN</p>
+                                <p class="text-cyan-400">[+] Legacy Service Accounts: Remediated to gMSA</p>
+                                <p class="text-emerald-400">[+] AES-256 Enforced | 128-Char Keys Rotated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Identity Security & Kerberoasting Briefing -->
+    <section id="identity-sec" class="py-16 border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider mb-2">Executive Briefing & Presentation</div>
+                    <h2 class="text-3xl font-bold text-white">Bypassing the Perimeter: The Kerberoasting Threat</h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center space-x-3">
+                    <span class="text-xs text-slate-400 font-mono">Active Directory Cryptographic Vulnerability Analysis</span>
+                </div>
+            </div>
+
+            <!-- PDF Slides Presentation Interactive Deck -->
+            <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+                <!-- Slide Header Tabs -->
+                <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-file-pdf text-red-500 text-lg"></i>
+                        <span class="font-mono text-xs font-bold text-slate-200">Bypassing-the-Perimeter.pdf (Executive Briefing)</span>
+                    </div>
+                    <div class="flex items-center space-x-2" id="slide-tabs">
+                        <button onclick="switchSlide(1)" id="slide-btn-1" class="px-3 py-1 rounded text-xs font-mono bg-emerald-500 text-slate-950 font-bold transition">Slide 1: Hook</button>
+                        <button onclick="switchSlide(2)" id="slide-btn-2" class="px-3 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Slide 2: Exploit</button>
+                        <button onclick="switchSlide(3)" id="slide-btn-3" class="px-3 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Slide 3: Systemic Fault</button>
+                        <button onclick="switchSlide(4)" id="slide-btn-4" class="px-3 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Slide 4: Architectural Fix</button>
+                        <button onclick="switchSlide(5)" id="slide-btn-5" class="px-3 py-1 rounded text-xs font-mono bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Slide 5: Executive Decision</button>
+                    </div>
+                </div>
+
+                <!-- Slide Viewer Content Container -->
+                <div class="p-6 md:p-8 min-h-[420px]" id="slide-viewer">
+                    <!-- Slide 1 Content -->
+                    <div id="slide-content-1" class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-mono">SLIDE 1: THE HOOK</span>
+                            <span class="text-xs text-slate-400 font-mono">Theme: Trusting the Courier</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Traditional Perimeter Defense vs. Cryptographic Cargo</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            The core structural vulnerability of enterprise identity does not lie at the perimeter gate, but in the cryptographic design of internal authentication. Under the Kerberos protocol, the Key Distribution Center (KDC) is structurally obligated to hand over an encrypted Service Ticket (TGS) to any authenticated domain user who requests it.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div class="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                                <div class="text-sm font-bold text-red-400 flex items-center justify-between">
+                                    <span>Traditional Perimeter Defense</span>
+                                    <span class="font-mono text-xs">Cost: $2M+</span>
+                                </div>
+                                <p class="text-xs text-slate-400">Focuses heavily on external traffic filtration. Completely blind to internal protocol service ticket requests.</p>
+                            </div>
+                            <div class="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                                <div class="text-sm font-bold text-emerald-400 flex items-center justify-between">
+                                    <span>Cryptographic Identity Cargo</span>
+                                    <span class="font-mono text-xs">Cost: Low</span>
+                                </div>
+                                <p class="text-xs text-slate-400">Focuses on key strength. Weak legacy service account passwords compromise the entire internal identity trust chain.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 Content (Hidden initially) -->
+                    <div id="slide-content-2" class="hidden space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-red-500/10 text-red-400 border border-red-500/30 text-xs font-mono">SLIDE 2: THE EXPLOIT</span>
+                            <span class="text-xs text-slate-400 font-mono">Theme: Silent Passage Out of the Vault</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">How Kerberoasting Bypasses EDR & Layer-7 Firewalls</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Because Kerberoasting utilizes completely legitimate authentication requests, standard security controls fail to flag it. An attacker only needs low-level domain access to query Active Directory for accounts with registered Service Principal Names (SPNs).
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-center pt-2">
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <i class="fa-solid fa-user-slash text-amber-400 text-xl mb-2"></i>
+                                <h4 class="text-xs font-bold text-white">1. Low-Level Account</h4>
+                                <p class="text-[11px] text-slate-400 mt-1">Compromised user account (e.g. shipping clerk)</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <i class="fa-solid fa-server text-cyan-400 text-xl mb-2"></i>
+                                <h4 class="text-xs font-bold text-white">2. KDC (Domain Controller)</h4>
+                                <p class="text-[11px] text-slate-400 mt-1">Processes valid TGS-REQ query</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <i class="fa-solid fa-ticket text-emerald-400 text-xl mb-2"></i>
+                                <h4 class="text-xs font-bold text-white">3. Encrypted TGS Ticket</h4>
+                                <p class="text-[11px] text-slate-400 mt-1">Issued silently without lockout triggers</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <i class="fa-solid fa-download text-purple-400 text-xl mb-2"></i>
+                                <h4 class="text-xs font-bold text-white">4. Local Memory Extraction</h4>
+                                <p class="text-[11px] text-slate-400 mt-1">Saved to disk for offline GPU cracking</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 Content -->
+                    <div id="slide-content-3" class="hidden space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-mono">SLIDE 3: SYSTEMIC FAULT</span>
+                            <span class="text-xs text-slate-400 font-mono">Theme: Offline GPU Force Crack</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Offline Password Cracking & Lockout Blindspots</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Once the encrypted TGS ticket is saved locally, attackers use GPU clusters to perform dictionary and wordlist attacks against the legacy RC4/NTLM hashes. Because this occurs completely offline, Active Directory account lockout policies are entirely unaware.
+                        </p>
+                        <div class="p-5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-3">
+                            <div class="flex items-center justify-between text-slate-400 border-b border-slate-800 pb-2">
+                                <span>Attack Vector Parameter</span>
+                                <span>Risk Impact</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span>Extracted NTLM Hash</span>
+                                <span class="text-amber-400">Static Input File</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span>GPU Cracking Speed</span>
+                                <span class="text-red-400">Billions of guesses / sec</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span>AD Domain Controller Lockout</span>
+                                <span class="text-emerald-400">Bypassed (Zero AD interaction)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 Content -->
+                    <div id="slide-content-4" class="hidden space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-mono">SLIDE 4: ARCHITECTURAL FIX</span>
+                            <span class="text-xs text-slate-400 font-mono">Theme: gMSA Upgrade</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Group Managed Service Accounts (gMSAs) Neutralization</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            The permanent remediation is migrating legacy service accounts to Active Directory Managed gMSAs. This offloads credential management to AD, enforcing 128-character machine keys, mandatory AES-256 encryption, and automated 30-day credential rotation with zero human intervention.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div class="p-5 rounded-xl bg-red-950/20 border border-red-500/30 space-y-3">
+                                <h4 class="text-sm font-bold text-red-400 flex items-center space-x-2">
+                                    <i class="fa-solid fa-xmark"></i>
+                                    <span>Legacy Service Account</span>
+                                </h4>
+                                <ul class="text-xs text-slate-300 space-y-2">
+                                    <li>• Human-generated weak passwords</li>
+                                    <li>• Vulnerable to RC4 cipher degradation</li>
+                                    <li>• Manual updates risk system downtime</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
+                                <h4 class="text-sm font-bold text-emerald-400 flex items-center space-x-2">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>gMSA Upgrade Architecture</span>
+                                </h4>
+                                <ul class="text-xs text-slate-300 space-y-2">
+                                    <li>• 128-character complex machine keys</li>
+                                    <li>• Enforced AES-256 encryption</li>
+                                    <li>• Automated 30-day password rotation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 Content -->
+                    <div id="slide-content-5" class="hidden space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 text-xs font-mono">SLIDE 5: EXECUTIVE DECISION</span>
+                            <span class="text-xs text-slate-400 font-mono">Theme: Risk vs Business Value</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Executive Call to Action: Compliance & Uptime</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Maintaining legacy service accounts to preserve uptime is a false economy. Leaving static administrative passwords unrotated violates SOC 2 Criteria CC6.3 and NIST SP 800-53 (IA-5). A planned 4-hour maintenance window permanently protects enterprise assets from multi-million dollar ransomware exposure.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <span class="text-xs font-mono text-red-400 block mb-1">Option A: Do Nothing</span>
+                                <span class="text-lg font-bold text-white block">$56M Est. Risk Exposure</span>
+                                <span class="text-xs text-slate-400">Post-incident forensic audit will flag executive negligence.</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <span class="text-xs font-mono text-emerald-400 block mb-1">Option B: Execute gMSA Migration</span>
+                                <span class="text-lg font-bold text-white block">4-Hour Maintenance Window</span>
+                                <span class="text-xs text-slate-400">Achieves full compliance validation & neutralizes Kerberoasting.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Summary Bar -->
+                <div class="bg-slate-950 px-6 py-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400">
+                    <span>Source PDF: <strong class="text-slate-200">Bypassing-the-Perimeter.pdf</strong> (6 Pages)</span>
+                    <span class="mt-2 sm:mt-0 font-mono text-emerald-400">Compliant with SOC 2 CC6.3 & NIST SP 800-53</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Application Security & Burp Suite Auditing -->
+    <section id="appsec" class="py-16 border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <div class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">Web Application Security & Diagnostic Analysis</div>
+                    <h2 class="text-3xl font-bold text-white">Burp Suite Pro Auditing & XSS Verification</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded-full">PortSwigger Certified Methodology</span>
+                </div>
+            </div>
+
+            <!-- Burp Suite Visual Cards & Interactive Inspector -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left: Burp Dashboard & Findings -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-bug text-red-400"></i>
+                                <span>Reflected XSS Vulnerability Advisory</span>
+                            </h3>
+                            <span class="text-xs font-mono bg-red-500/20 text-red-400 px-2.5 py-0.5 rounded border border-red-500/30 font-semibold">HIGH SEVERITY</span>
+                        </div>
+
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            During dynamic security testing on target endpoints, Burp Suite Pro identified un-sanitized user input reflected directly into HTML responses via query parameters.
+                        </p>
+
+                        <!-- Simulated Burp Suite Advisory Box -->
+                        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-2">
+                            <div class="text-slate-400 flex justify-between border-b border-slate-800 pb-2">
+                                <span>Issue Detail: Reflected XSS</span>
+                                <span class="text-emerald-400">Confidence: Certain</span>
+                            </div>
+                            <div class="text-slate-300">
+                                <span class="text-slate-500">Host:</span> http://www.wahh-labs.net
+                            </div>
+                            <div class="text-slate-300">
+                                <span class="text-slate-500">Path:</span> /search/1/Default.aspx
+                            </div>
+                            <div class="text-slate-300">
+                                <span class="text-slate-500">Parameter:</span> SearchTerm
+                            </div>
+                            <div class="p-2.5 rounded bg-red-950/30 border border-red-800/50 text-red-300 mt-2">
+                                Payload: <code>7b576&lt;script&gt;alert(1)&lt;/script&gt;5e12190748156777e</code>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Thumbnails -->
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1">
+                                <span class="text-xs font-semibold text-slate-200 block">1. Scanner Activity</span>
+                                <p class="text-[11px] text-slate-400">Automated passive/active crawls flagging SQLi & Reflected XSS.</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1">
+                                <span class="text-xs font-semibold text-slate-200 block">2. Inspector & Tokens</span>
+                                <p class="text-[11px] text-slate-400">Base64 & URL decoding session cookies (<code>username=admin</code>).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Burp HTTP Request/Response Inspector -->
+                <div class="lg:col-span-6">
+                    <div class="rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden terminal-shadow">
+                        <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                                <span class="text-xs font-mono text-slate-400 ml-2">Burp Suite Pro Inspector Simulator</span>
+                            </div>
+                            <span class="text-xs font-mono text-emerald-400">HTTP/1.1 200 OK</span>
+                        </div>
+
+                        <div class="p-4 font-mono text-xs text-slate-300 space-y-3 bg-slate-950">
+                            <div class="text-slate-500">// Intercepted Raw HTTP Request Header</div>
+                            <div class="p-3 rounded bg-slate-900 border border-slate-800/80 space-y-1 overflow-x-auto text-[11px]">
+                                <p class="text-emerald-400">GET /?q=%3Cimg%20src=x%20onerror=alert%281%29%3E HTTP/1.1</p>
+                                <p><span class="text-slate-500">Host:</span> ac951fa31f24d2e980bb8595001c00f2.web-security-academy.net</p>
+                                <p><span class="text-slate-500">User-Agent:</span> Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/86.0.4240.75</p>
+                                <p><span class="text-slate-500">Cookie:</span> session=<span class="text-cyan-300">Tzo0OiJVc2VyIjoyOntzOjg6InVzZXJuYW1lI...</span></p>
+                            </div>
+
+                            <div class="text-slate-500">// Inspector Base64 / URL Decoder Output</div>
+                            <div class="p-3 rounded bg-slate-900 border border-slate-800/80 space-y-1 text-[11px]">
+                                <p class="text-slate-400">DECODED FROM Base64:</p>
+                                <p class="text-amber-300 font-bold">O:4:"User":2:{s:8:"username";s:5:"admin";s:5:"admin";i:1;}</p>
+                                <p class="text-[10px] text-slate-500 mt-1">Impact: Insecure Deserialization / Privilege Escalation via session token tampering.</p>
+                            </div>
+
+                            <div class="pt-2 flex justify-end">
+                                <button onclick="copyToClipboard('GET /?q=%3Cimg%20src=x%20onerror=alert%281%29%3E HTTP/1.1')" class="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono transition flex items-center space-x-2">
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>Copy Sample Payload</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Network Reconnaissance & Log Forensics -->
+    <section id="recon" class="py-16 border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <div class="text-xs font-mono text-purple-400 uppercase tracking-wider mb-2">Network Security & Packet Forensics</div>
+                    <h2 class="text-3xl font-bold text-white">Nmap Subnet Scanning & PCAP Log Forensics</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-xs font-mono text-slate-400">Subnet Target Range: 192.168.1.4-6</span>
+                </div>
+            </div>
+
+            <!-- Terminal Output + Live Interactive Scan Launcher -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Kali Terminal Emulator -->
+                <div class="lg:col-span-7">
+                    <div class="rounded-2xl bg-black border border-slate-800 overflow-hidden terminal-shadow font-mono text-xs">
+                        <!-- Terminal Bar -->
+                        <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                                <span class="text-slate-400 text-xs ml-2">root@kali:~# nmap execution terminal</span>
+                            </div>
+                            <span class="text-purple-400 text-[11px]">Kali Linux 2026.1</span>
+                        </div>
+
+                        <!-- Command Line & Logs -->
+                        <div class="p-5 text-slate-300 space-y-3 leading-relaxed">
+                            <p class="text-slate-400"># Executing active SYN-Stealth & Service OS Fingerprint Scan</p>
+                            <p class="text-emerald-400 font-bold">root@idea:~# nmap -sS -sV -O -A -top-ports 3 192.168.1.4-6</p>
+
+                            <div class="border-t border-slate-900 pt-3 space-y-2">
+                                <p class="text-slate-300">Starting Nmap 7.25BETA1 ( https://nmap.org )</p>
+                                <p class="text-slate-300">Nmap scan report for <span class="text-cyan-400 font-bold">192.168.1.4</span></p>
+                                <p class="text-slate-400">Host is up (0.00036s latency).</p>
+                                <div class="pl-4 text-slate-400">
+                                    <p>23/tcp &nbsp; closed &nbsp; telnet</p>
+                                    <p>80/tcp &nbsp; closed &nbsp; http</p>
+                                    <p>443/tcp closed &nbsp; https</p>
+                                    <p class="text-slate-500">MAC Address: 00:1C:42:XX:XX:XX (Apple Hardware)</p>
+                                </div>
+
+                                <p class="text-slate-300 pt-2">Nmap scan report for <span class="text-cyan-400 font-bold">192.168.1.6</span></p>
+                                <p class="text-slate-400">Host is up (0.0015s latency).</p>
+                                <div class="pl-4 text-slate-400">
+                                    <p>23/tcp &nbsp; <span class="text-amber-400">filtered</span> telnet</p>
+                                    <p>80/tcp &nbsp; <span class="text-amber-400">filtered</span> http</p>
+                                    <p>443/tcp <span class="text-amber-400">filtered</span> https</p>
+                                    <p class="text-slate-500">MAC Address: 00:1C:42:81:FD:08 (Parallels Virtualization)</p>
+                                </div>
+
+                                <p class="text-emerald-400 pt-2">[+] Nmap done: 3 IP addresses (2 hosts up) scanned in 6.06 seconds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PCAP Raw Network Dump Inspector -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-network-wired text-purple-400"></i>
+                                <span>PCAP Packet Dump Forensics</span>
+                            </h3>
+                            <span class="text-xs font-mono bg-purple-500/20 text-purple-300 px-2.5 py-0.5 rounded border border-purple-500/30">Raw Stream Logs</span>
+                        </div>
+
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Log inspection from captured PCAP file (<code>nmap_ACK_scan_on_port_80</code>) & CSV network trace (<code>My Basic Network Scan_gfk39k.csv</code>).
+                        </p>
+
+                        <!-- PCAP Captured Log Table -->
+                        <div class="overflow-x-auto rounded-lg border border-slate-800 bg-slate-950">
+                            <table class="w-full text-left text-xs font-mono">
+                                <thead class="bg-slate-900 text-slate-400 border-b border-slate-800">
+                                    <tr>
+                                        <th class="p-2.5">Protocol</th>
+                                        <th class="p-2.5">Target Host</th>
+                                        <th class="p-2.5">Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                                    <tr>
+                                        <td class="p-2.5 text-cyan-400 font-bold">SMB/NetBIOS</td>
+                                        <td class="p-2.5">192.168.1.102</td>
+                                        <td class="p-2.5 text-amber-300">\MAILSLOT\BROWSE (WEAK-PC)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 text-emerald-400 font-bold">TCP ACK Scan</td>
+                                        <td class="p-2.5">Port 80</td>
+                                        <td class="p-2.5">Probe response: RST/ACK validation</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 text-purple-400 font-bold">ARP Query</td>
+                                        <td class="p-2.5">Broadcast</td>
+                                        <td class="p-2.5">Who has 192.168.1.1? Tell 192.168.1.4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+                            <span>Captured Datasets: <strong class="text-slate-200">2 PCAP Dumps + 1 CSV</strong></span>
+                            <i class="fa-solid fa-file-csv text-emerald-400 text-base"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: OWASP 2026 Mitigation Playbook -->
+    <section id="owasp" class="py-16 border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider mb-2">Compliance & Security Playbook</div>
+                    <h2 class="text-3xl font-bold text-white">OWASP Top 10 (2026) Mitigation Controls</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-xs font-mono text-slate-400">Source: OWASP_2026_Mitigation_Plan.docx</span>
+                </div>
+            </div>
+
+            <!-- Interactive Accordion Grid for 10 OWASP Risks -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="owasp-accordion">
+                
+                <!-- Risk 1 -->
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-red-400 font-bold">A01:2026 - BROKEN ACCESS CONTROL</span>
+                        <span class="text-[10px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded border border-red-500/30">#1 Top Risk</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">API Endpoint Ownership Validation</h3>
+                    <p class="text-xs text-slate-300">
+                        Every API endpoint must verify ownership server-side. Never rely on client-side ID parameters alone.
+                    </p>
+                    <div class="p-3 rounded bg-slate-950 font-mono text-[11px] text-emerald-400 border border-slate-800">
+                        <code>SELECT * FROM tickets WHERE id = ? AND user_id = current_session_user;</code>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex items-center space-x-2">
+                        <i class="fa-solid fa-vial text-cyan-400"></i>
+                        <span>Verification: Expect HTTP 403 Forbidden for un-owned resource queries.</span>
+                    </div>
+                </div>
+
+                <!-- Risk 2 -->
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-amber-400 font-bold">A02:2026 - CRYPTOGRAPHIC FAILURES</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/30">Data Protection</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">TLS 1.3 & Key Vault Encryption</h3>
+                    <p class="text-xs text-slate-300">
+                        Disk encryption enabled for managed databases (RDS/Cloud SQL). Secrets stored strictly in AWS Secrets Manager or Vault.
+                    </p>
+                    <div class="p-3 rounded bg-slate-950 font-mono text-[11px] text-amber-300 border border-slate-800">
+                        <code>Strict: Enforce TLS 1.3 only | Disable legacy SSL/TLS 1.0/1.1</code>
+                    </div>
+                    <div class="text-[11px] text-slate-400 flex items-center space-x-2">
+                        <i class="fa-solid fa-key text-amber-400"></i>
+                        <span>Ops Execution: Zero hardcoded secrets in versioned .env files.</span>
+                    </div>
+                </div>
+
+                <!-- Risk 3 -->
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-cyan-400 font-bold">A03:2026 - INJECTION (SQL / NoSQL / COMMAND)</span>
+                        <span class="text-[10px] bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded border border-cyan-500/30">Query Defense</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Parameterized Queries & WAF Filtering</h3>
+                    <p class="text-xs text-slate-300">
+                        Mandatory use of parameterized queries to prevent string concatenation attacks. Database users configured with Least Privilege.
+                    </p>
+                    <div class="p-3 rounded bg-slate-950 font-mono text-[11px] text-cyan-300 border border-slate-800">
+                        <code>Deploy Web Application Firewall (WAF) SQLi Protection Rule Set</code>
+                    </div>
+                </div>
+
+                <!-- Risk 4 -->
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-purple-400 font-bold">A04:2026 - INSECURE DESIGN</span>
+                        <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded border border-purple-500/30">Business Logic</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Centralized Server Financial Calculations</h3>
+                    <p class="text-xs text-slate-300">
+                        "Never trust data from the client." The client sends intent (Item ID); the server determines fact (Price & Taxes).
+                    </p>
+                    <div class="p-3 rounded bg-slate-950 font-mono text-[11px] text-purple-300 border border-slate-800">
+                        <code>Prevents "Zero Naira / Zero Dollar" price manipulation exploits</code>
+                    </div>
+                </div>
+
+                <!-- Risk 5 & 6 -->
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-blue-400 font-bold">A05:2026 - SECURITY MISCONFIGURATION</span>
+                        <span class="text-[10px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded border border-blue-500/30">IaC Automation</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Infrastructure as Code (Terraform)</h3>
+                    <p class="text-xs text-slate-300">
+                        Automated provisioning ensures no public S3 buckets or leftover debug modes. Nmap scans enforce minimal exposed ports (80/443).
+                    </p>
+                </div>
+
+                <div class="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-mono text-emerald-400 font-bold">A06:2026 - VULNERABLE COMPONENTS</span>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">Supply Chain</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Automated CI/CD Vulnerability Scanning</h3>
+                    <p class="text-xs text-slate-300">
+                        Integration of Trivy / Snyk into GitHub Actions. Pipeline automatically breaks builds if Critical CVEs are detected.
+                    </p>
+                </div>
+
+                <!-- Risk 7 - 10 summary box -->
+                <div class="md:col-span-2 p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-4">
+                    <h4 class="text-sm font-bold text-white uppercase font-mono tracking-wider">Additional Controls: A07 - A10 Execution Matrix</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                        <div class="p-3 rounded bg-slate-900 border border-slate-800">
+                            <span class="text-emerald-400 font-bold block">A07 Auth Failures</span>
+                            <span class="text-slate-400">MFA for admin accounts + 5 attempt/min IP rate limiting.</span>
+                        </div>
+                        <div class="p-3 rounded bg-slate-900 border border-slate-800">
+                            <span class="text-cyan-400 font-bold block">A08 Data Integrity</span>
+                            <span class="text-slate-400">CI/CD is the single source of truth. Checksum verification.</span>
+                        </div>
+                        <div class="p-3 rounded bg-slate-900 border border-slate-800">
+                            <span class="text-purple-400 font-bold block">A09 Logging Failures</span>
+                            <span class="text-slate-400">Centralized CloudWatch/ELK + automated 403 anomaly alerts.</span>
+                        </div>
+                        <div class="p-3 rounded bg-slate-900 border border-slate-800">
+                            <span class="text-amber-400 font-bold block">A10 SSRF Defense</span>
+                            <span class="text-slate-400">Network egress filtering. Web server only reaches DB & payment gateway.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: OSI 7-Layer Interactive Reference -->
+    <section id="osi" class="py-16 border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <div class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">Network Architecture Standard</div>
+                    <h2 class="text-3xl font-bold text-white">The Open Systems Interconnection (OSI) Model</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-xs font-mono text-slate-400">7-Layer Network Stack Reference</span>
+                </div>
+            </div>
+
+            <!-- OSI 7-Layer Stack Visualizer -->
+            <div class="space-y-3">
+                
+                <!-- Layer 7 -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-red-950/40 via-slate-900 to-slate-900 border border-red-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 font-mono font-bold flex items-center justify-center text-sm border border-red-500/30">7</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">APPLICATION LAYER</span>
+                            <span class="text-xs text-slate-400">DNS, HTTP/HTTPS, P2P, EMAIL/SMTP, TELNET, FTP</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-red-400 bg-red-950 px-2.5 py-1 rounded border border-red-900">Software Layer</span>
+                </div>
+
+                <!-- Layer 6 -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-lime-950/40 via-slate-900 to-slate-900 border border-lime-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-lime-500/20 text-lime-400 font-mono font-bold flex items-center justify-center text-sm border border-lime-500/30">6</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">PRESENTATION LAYER</span>
+                            <span class="text-xs text-slate-400">Data Formatting: HTML, DOC, JPEG, MP3, Sockets, Encryption</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-lime-400 bg-lime-950 px-2.5 py-1 rounded border border-lime-900">Software Layer</span>
+                </div>
+
+                <!-- Layer 5 -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-slate-900 border border-purple-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 font-mono font-bold flex items-center justify-center text-sm border border-purple-500/30">5</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">SESSION LAYER</span>
+                            <span class="text-xs text-slate-400">Session Establishment in TCP, SIP, RTP, RPC Named Pipes</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-purple-400 bg-purple-950 px-2.5 py-1 rounded border border-purple-900">Software Layer</span>
+                </div>
+
+                <!-- Layer 4 -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-slate-900 border border-cyan-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 glow-blue">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 font-mono font-bold flex items-center justify-center text-sm border border-cyan-500/30">4</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">TRANSPORT LAYER</span>
+                            <span class="text-xs text-slate-400">TCP, UDP, SCTP, SSL, TLS Encryption Flow</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-cyan-400 bg-cyan-950 px-2.5 py-1 rounded border border-cyan-900">Heart of OSI</span>
+                </div>
+
+                <!-- Layer 3 -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-orange-950/40 via-slate-900 to-slate-900 border border-orange-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-orange-500/20 text-orange-400 font-mono font-bold flex items-center justify-center text-sm border border-orange-500/30">3</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">NETWORK LAYER</span>
+                            <span class="text-xs text-slate-400">IP, ARP, IPsec, ICMP, IGMP, OSPF Packet Routing</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-orange-400 bg-orange-950 px-2.5 py-1 rounded border border-orange-900">Hardware Layer</span>
+                </div>
+
+                <!-- Layer 2 & 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="p-4 rounded-xl bg-slate-900 border border-blue-500/30 flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 font-mono font-bold flex items-center justify-center text-sm border border-blue-500/30">2</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">DATA LINK LAYER</span>
+                            <span class="text-xs text-slate-400">Ethernet, 802.11 Wi-Fi, MAC Addresses, VLAN, Switches</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900 border border-emerald-500/30 flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center text-sm border border-emerald-500/30">1</span>
+                        <div>
+                            <span class="font-bold text-white text-sm block">PHYSICAL LAYER</span>
+                            <span class="text-xs text-slate-400">RS-232, RJ45, Fiber Optic, Cabling, Signals, DSL</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Embedded Links Footer -->
+    <footer class="py-12 bg-slate-950 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <h3 class="text-lg font-bold text-white">Dare Omotosho</h3>
+                    <p class="text-xs text-slate-400 mt-1">Cloud & Cybersecurity Portfolio Showcase • Active Directory & AppSec</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="https://github.com/Career-RoadMap/dareomotosho" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-mono transition flex items-center space-x-2">
+                        <i class="fa-brands fa-github text-emerald-400"></i>
+                        <span>GitHub Repository</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dare-omotosho-lekan-cloud-oxla" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-mono transition flex items-center space-x-2">
+                        <i class="fa-brands fa-linkedin text-blue-400"></i>
+                        <span>LinkedIn Connection</span>
+                    </a>
+                    <a href="https://dareomotosho.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-mono font-bold transition flex items-center space-x-2 shadow-lg shadow-emerald-500/20">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>dareomotosho.com</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <span>© 2026 Dare Omotosho. All rights reserved.</span>
+                <span class="font-mono text-emerald-400/80">Securing Systems & Cryptographic Perimeters</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Scripts -->
+    <script>
+        // PDF Presentation Slide Switcher
+        function switchSlide(slideNum) {
+            // Hide all slides
+            for (let i = 1; i <= 5; i++) {
+                const content = document.getElementById(`slide-content-${i}`);
+                const btn = document.getElementById(`slide-btn-${i}`);
+                if (content) content.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
+                    btn.classList.add('bg-slate-800', 'text-slate-300');
+                }
+            }
+
+            // Show target slide
+            const targetContent = document.getElementById(`slide-content-${slideNum}`);
+            const targetBtn = document.getElementById(`slide-btn-${slideNum}`);
+            
+            if (targetContent) targetContent.classList.remove('hidden');
+            if (targetBtn) {
+                targetBtn.classList.remove('bg-slate-800', 'text-slate-300');
+                targetBtn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
+            }
+        }
+
+        // Copy Helper function
+        function copyToClipboard(text) {
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            // Toast feedback
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs font-mono shadow-xl transition-opacity duration-300';
+            toast.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Payload copied to clipboard!';
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
